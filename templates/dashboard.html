@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <h1>Welcome, {{ username }}!</h1>
+    <a href="{{ url_for('add_member') }}">Add Member</a>
+    <a href="{{ url_for('view_members') }}">View Members</a>
+    <a href="{{ url_for('register_member') }}">Register New Member</a>
+    <a href="{{ url_for('view_classes') }}">View Classes</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <h2>User Data:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Password (Hashed)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user, details in user_data.items() %}
+            <tr>
+                <td>{{ user }}</td>
+                <td>{{ details['role'] }}</td>
+                <td>{{ details['password'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
